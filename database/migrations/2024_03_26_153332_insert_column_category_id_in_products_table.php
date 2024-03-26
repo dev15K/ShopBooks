@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->longText('avt')->default('image/avatar-default.svg');
+        Schema::table('products', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references(/**/ 'id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -21,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('avt');
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('category_id');
         });
     }
 };
