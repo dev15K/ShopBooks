@@ -39,7 +39,7 @@
 <!-- End Header -->
 
 <!-- ======= Sidebar ======= -->
-@include('admin.pages.sidebar')
+@include('ui.layouts.action.sidebar')
 <!-- End Sidebar-->
 
 @include('sweetalert::alert')

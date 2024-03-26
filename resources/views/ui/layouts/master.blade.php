@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ asset('ui/css/aos.css') }}">
 
     <link rel="stylesheet" href="{{ asset('ui/css/style.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 </head>
 <body>
 

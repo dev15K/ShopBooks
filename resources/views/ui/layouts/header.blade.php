@@ -20,7 +20,7 @@
                     <div class="site-top-icons">
                         <ul>
                             @if(\Illuminate\Support\Facades\Auth::check())
-                                <li><a href="#"><span class="icon icon-person"></span></a></li>
+                                <li><a href="{{ route('user.profile.show') }}"><span class="icon icon-person"></span></a></li>
                                 <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                 <li>
                                     <a href="cart.html" class="site-cart">
@@ -28,6 +28,7 @@
                                         <span class="count">2</span>
                                     </a>
                                 </li>
+                                <li><a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
                             @else
                                 <li><a href="{{ route('auth.processLogin') }}"><span class="icon icon-person"></span></a></li>
                             @endif
