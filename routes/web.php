@@ -44,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
     require_once __DIR__ . '/ui/auth.php';
 });
 
-Route::group(['prefix' => '', 'middleware' => ['ui.admin']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['ui.admin']], function () {
     require_once __DIR__ . '/ui/admin.php';
 });
 

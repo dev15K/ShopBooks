@@ -7,4 +7,6 @@
 6. composer require socialiteproviders/manager
 7. composer require guzzlehttp/guzzle
 8. composer require maatwebsite/excel
-9. cp app/Enums/.constant app/Enums/Constants.php
+9. composer require patrickschur/language-detection
+10. composer require stichoza/google-translate-php
+11. cp app/Enums/.constant app/Enums/Constants.php

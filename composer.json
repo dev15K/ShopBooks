@@ -12,8 +12,10 @@
         "laravel/sanctum": "^3.3",
         "laravel/socialite": "*",
         "laravel/tinker": "^2.8",
+        "patrickschur/language-detection": "^5.3",
         "realrashid/sweet-alert": "*",
         "socialiteproviders/manager": "^4.4",
+        "stichoza/google-translate-php": "^5.1",
         "tymon/jwt-auth": "*"
     },
     "require-dev": {

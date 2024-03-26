@@ -1,5 +1,5 @@
 /**
-* Template Name: NiceAdmin - v2.5.0
+* Template Name: ShopBooks - v2.5.0
 * Template URL: #nice-admin-bootstrap-admin-html-template/
 * Author: BootstrapMade.com
 * License: #license/
