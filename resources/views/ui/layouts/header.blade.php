@@ -12,7 +12,7 @@
 
                 <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
                     <div class="site-logo">
-                        <a href="{{ route('home') }}" class="js-logo-clone">Shoppers</a>
+                        <a href="{{ route('home') }}" class="js-logo-clone">ShopBooks</a>
                     </div>
                 </div>
 

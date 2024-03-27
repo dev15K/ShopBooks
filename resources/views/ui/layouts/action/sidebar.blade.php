@@ -2,6 +2,22 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+       @php
+           $isAdmin = (new \App\Http\Controllers\MainController())->checkAdmin();
+       @endphp
+       @if($isAdmin)
+            <!-- Start Dashboard Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('admin.home') }}">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <!-- End Dashboard Nav -->
+       @endif
+
+        <li class="nav-heading">Pages</li>
+
         <!-- Start Profile Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('user.profile.show') }}">

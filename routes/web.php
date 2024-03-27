@@ -38,6 +38,11 @@ Route::group(['prefix' => 'error'], function () {
 
 Route::group(['prefix' => ''], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/shop', [HomeController::class, 'shop'])->name('main.shop');
+    Route::get('/detail/{id}', [HomeController::class, 'detailProduct'])->name('main.product.detail');
+    Route::get('/cart', [HomeController::class, 'cart'])->name('main.cart');
+    Route::get('/checkout', [HomeController::class, 'checkout'])->name('main.checkout');
+    Route::get('/contact', [HomeController::class, 'contact'])->name('main.contact');
 });
 
 Route::middleware(['auth'])->group(function () {

@@ -2,12 +2,14 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+        <!-- Start Dashboard Nav -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('admin.home') }}">
                 <i class="bi bi-grid"></i>
                 <span>Dashboard</span>
             </a>
-        </li><!-- End Dashboard Nav -->
+        </li>
+        <!-- End Dashboard Nav -->
 
         <!-- Start Category Nav -->
         <li class="nav-item">
@@ -113,7 +115,7 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="users-profile.html">
+            <a class="nav-link collapsed" href="{{ route('user.profile.show') }}">
                 <i class="bi bi-person"></i>
                 <span>Profile</span>
             </a>

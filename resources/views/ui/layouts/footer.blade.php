@@ -33,8 +33,9 @@
             <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
                 <h3 class="footer-heading mb-4">Promo</h3>
                 <a href="#" class="block-6">
-                    <img src="images/hero_1.jpg" alt="Image placeholder" class="img-fluid rounded mb-4">
-                    <h3 class="font-weight-light  mb-0">Finding Your Perfect Shoes</h3>
+                    <img src="{{ asset('ui/images/open-book-on-blue-background-back-to-school-concept-copy-space-generative-ai-photo.jpg') }}"
+                         alt="Image placeholder" class="img-fluid rounded mb-4">
+                    <h3 class="font-weight-light  mb-0">Finding Your Favourite Books</h3>
                     <p>Promo from  nuary 15 &mdash; 25, 2019</p>
                 </a>
             </div>
@@ -43,8 +44,8 @@
                     <h3 class="footer-heading mb-4">Contact Info</h3>
                     <ul class="list-unstyled">
                         <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
-                        <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
-                        <li class="email">emailaddress@domain.com</li>
+                        <li class="phone"><a href="tel://#">0989889889</a></li>
+                        <li class="email">dev.fullstack@gmail.com</li>
                     </ul>
                 </div>
 
@@ -62,9 +63,7 @@
         <div class="row pt-5 mt-5 text-center">
             <div class="col-md-12">
                 <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     Copyright &copy;2024 All rights reserved
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
 

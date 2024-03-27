@@ -3,11 +3,11 @@
     Homepage
 @endsection
 @section('content')
-    <div class="site-blocks-cover" style="background-image: url({{asset('ui/images/hero_1.jpg')}});" data-aos="fade">
+    <div class="site-blocks-cover" style="background-image: url({{asset('ui/images/bg-book-blue.avif')}});" data-aos="fade">
         <div class="container">
             <div class="row align-items-start align-items-md-center justify-content-end">
                 <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-                    <h1 class="mb-2">Finding Your Perfect Shoes</h1>
+                    <h1 class="mb-2">Finding Your Favorite Books</h1>
                     <div class="intro-text text-center text-md-left">
                         <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at iaculis quam. Integer accumsan tincidunt fringilla. </p>
                         <p>
@@ -63,7 +63,7 @@
                         </figure>
                         <div class="text">
                             <span class="text-uppercase">Collections</span>
-                            <h3>Women</h3>
+                            <h3>Novel</h3>
                         </div>
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                         </figure>
                         <div class="text">
                             <span class="text-uppercase">Collections</span>
-                            <h3>Children</h3>
+                            <h3>Special</h3>
                         </div>
                     </a>
                 </div>
@@ -85,7 +85,7 @@
                         </figure>
                         <div class="text">
                             <span class="text-uppercase">Collections</span>
-                            <h3>Men</h3>
+                            <h3>Comic</h3>
                         </div>
                     </a>
                 </div>
@@ -97,72 +97,26 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-7 site-section-heading text-center pt-4">
-                    <h2>Featured Products</h2>
+                    <h2>New Products</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="nonloop-block-3 owl-carousel">
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{ asset('ui/images/cloth_1.jpg') }}" alt="Image placeholder" class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="#">Tank Top</a></h3>
-                                    <p class="mb-0">Finding perfect t-shirt</p>
-                                    <p class="text-primary font-weight-bold">$50</p>
+                        @foreach($new_products as $new_product)
+                            <div class="item">
+                                <div class="block-4 text-center">
+                                    <figure class="block-4-image">
+                                        <img src="{{ asset($new_product->thumbnail) }}" alt="Image placeholder" class="img-fluid">
+                                    </figure>
+                                    <div class="block-4-text p-4">
+                                        <h3><a href="#">{{ $new_product->name }}</a></h3>
+                                        <p class="mb-0">{{ $new_product->short_description }}</p>
+                                        <p class="text-primary font-weight-bold">${{ $new_product->price }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{ asset('ui/images/shoe_1.jpg') }}" alt="Image placeholder" class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="#">Corater</a></h3>
-                                    <p class="mb-0">Finding perfect products</p>
-                                    <p class="text-primary font-weight-bold">$50</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{ asset('ui/images/cloth_2.jpg') }}" alt="Image placeholder" class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="#">Polo Shirt</a></h3>
-                                    <p class="mb-0">Finding perfect products</p>
-                                    <p class="text-primary font-weight-bold">$50</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{ asset('ui/images/cloth_3.jpg') }}" alt="Image placeholder" class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="#">T-Shirt Mockup</a></h3>
-                                    <p class="mb-0">Finding perfect products</p>
-                                    <p class="text-primary font-weight-bold">$50</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="block-4 text-center">
-                                <figure class="block-4-image">
-                                    <img src="{{ asset('ui/images/shoe_1.jpg') }}" alt="Image placeholder" class="img-fluid">
-                                </figure>
-                                <div class="block-4-text p-4">
-                                    <h3><a href="#">Corater</a></h3>
-                                    <p class="mb-0">Finding perfect products</p>
-                                    <p class="text-primary font-weight-bold">$50</p>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

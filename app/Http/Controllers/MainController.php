@@ -5,11 +5,27 @@ namespace App\Http\Controllers;
 use App\Enums\RoleName;
 use App\Models\Role;
 use App\Models\RoleUser;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class MainController extends Controller
 {
+    public function checkAdmin()
+    {
+        $isAdmin = false;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $role_user = RoleUser::where('user_id', $user->id)->first();
+            $role = Role::find($role_user->role_id);
+            if ($role && $role->name == RoleName::ADMIN) {
+                $isAdmin = true;
+            }
+        }
+        return $isAdmin;
+    }
+
     public function setLanguage(Request $request, $locale)
     {
         switch ($locale) {
