@@ -19,8 +19,12 @@
 
     <link rel="stylesheet" href="{{ asset('ui/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>
 </head>
 <body>
+
+@include('sweetalert::alert')
 
 <div class="site-wrap">
     @include('ui.layouts.header')

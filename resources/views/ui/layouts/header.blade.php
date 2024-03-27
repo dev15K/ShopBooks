@@ -22,10 +22,14 @@
                             @if(\Illuminate\Support\Facades\Auth::check())
                                 <li><a href="{{ route('user.profile.show') }}"><span class="icon icon-person"></span></a></li>
                                 <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                                @php
+                                    $my_cart = \App\Models\Cart::where('user_id', Auth::user()->id)->get();
+                                    $count = count($my_cart);
+                                @endphp
                                 <li>
-                                    <a href="cart.html" class="site-cart">
+                                    <a href="{{ route('cart.show') }}" class="site-cart">
                                         <span class="icon icon-shopping_cart"></span>
-                                        <span class="count">2</span>
+                                        <span class="count">{{ $count }}</span>
                                     </a>
                                 </li>
                                 <li><a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a></li>

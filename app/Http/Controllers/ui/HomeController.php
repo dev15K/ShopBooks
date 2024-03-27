@@ -5,9 +5,11 @@ namespace App\Http\Controllers\ui;
 use App\Enums\CategoryStatus;
 use App\Enums\ProductStatus;
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -50,7 +52,8 @@ class HomeController extends Controller
 
     public function cart()
     {
-        return view('ui.pages.cart');
+        $carts = Cart::where('user_id', Auth::user()->id)->orderByDesc('id')->get();
+        return view('ui.pages.cart', compact('carts'));
     }
 
     public function checkout()
