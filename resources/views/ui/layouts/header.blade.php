@@ -20,7 +20,8 @@
                     <div class="site-top-icons">
                         <ul>
                             @if(\Illuminate\Support\Facades\Auth::check())
-                                <li><a href="{{ route('user.profile.show') }}"><span class="icon icon-person"></span></a></li>
+                                <li><a href="{{ route('user.profile.show') }}"><span
+                                            class="icon icon-person"></span></a></li>
                                 <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                 @php
                                     $my_cart = \App\Models\Cart::where('user_id', Auth::user()->id)->get();
@@ -32,11 +33,15 @@
                                         <span class="count">{{ $count }}</span>
                                     </a>
                                 </li>
-                                <li><a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                                <li><a href="{{ route('auth.logout') }}"><i class="fa-solid fa-right-from-bracket"></i></a>
+                                </li>
                             @else
-                                <li><a href="{{ route('auth.processLogin') }}"><span class="icon icon-person"></span></a></li>
+                                <li><a href="{{ route('auth.processLogin') }}"><span
+                                            class="icon icon-person"></span></a></li>
                             @endif
-                            <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                            <li class="d-inline-block d-md-none ml-md-0"><a href="#"
+                                                                            class="site-menu-toggle js-menu-toggle"><span
+                                        class="icon-menu"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,37 +49,51 @@
             </div>
         </div>
     </div>
+    @php
+        $category_no_parents = \App\Models\Category::where('parent_id', null)->orderByDesc('id')->get();
+    @endphp
     <nav class="site-navigation text-right text-md-center" role="navigation">
         <div class="container">
             <ul class="site-menu js-clone-nav d-none d-md-block">
+                <li><a href="{{ route('home') }}">Home</a></li>
                 <li class="has-children">
-                    <a href="index.html">Home</a>
+                    <a href="">Category</a>
                     <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                        <li class="has-children">
-                            <a href="#">Sub Menu</a>
-                            <ul class="dropdown">
-                                <li><a href="#">Menu One</a></li>
-                                <li><a href="#">Menu Two</a></li>
-                                <li><a href="#">Menu Three</a></li>
-                            </ul>
-                        </li>
+                        @foreach($category_no_parents as $category_no_parent)
+                            @php
+                                $category_childs = \App\Models\Category::where('parent_id', $category_no_parent->id)->orderByDesc('id')->get();
+                            @endphp
+                            @if(count($category_childs) > 0)
+                                <li class="has-children">
+                                    <a href="{{ route('main.products.list.category', $category_no_parent->id) }} ">{{ $category_no_parent->name }}</a>
+                                    <ul class="dropdown">
+                                        @foreach($category_childs as $category_child)
+                                            <li>
+                                                <a href="{{ route('main.products.list.category', $category_child->id) }}">  {{ $category_child->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="{{ route('main.products.list.category', $category_no_parent->id) }}">{{ $category_no_parent->name }}</a>
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </li>
-                <li class="has-children">
-                    <a href="about.html">About</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Menu One</a></li>
-                        <li><a href="#">Menu Two</a></li>
-                        <li><a href="#">Menu Three</a></li>
-                    </ul>
-                </li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="#">Catalogue</a></li>
-                <li><a href="#">New Arrivals</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                {{--                <li class="has-children">--}}
+                {{--                    <a href="{{ route('main.coming.soon') }}">Catalogue</a>--}}
+                {{--                    <ul class="dropdown">--}}
+                {{--                        <li><a href="#">Menu One</a></li>--}}
+                {{--                        <li><a href="#">Menu Two</a></li>--}}
+                {{--                        <li><a href="#">Menu Three</a></li>--}}
+                {{--                    </ul>--}}
+                {{--                </li>--}}
+                <li><a href="{{ route('main.shop') }}">Shop</a></li>
+                <li><a href="{{ route('main.coming.soon') }}">New Arrivals</a></li>
+                <li><a href="{{ route('main.about') }}">About</a></li>
+                <li><a href="{{ route('main.contact') }}">Contact</a></li>
             </ul>
         </div>
     </nav>

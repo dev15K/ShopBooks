@@ -18,7 +18,7 @@
             <div class="row mb-5">
                 <div class="col-md-12">
                     <div class="border p-4 rounded" role="alert">
-                        Returning customer? <a href="#">Click here</a>
+                        Returning customer? <a href="{{ route('main.contact') }}">Click here</a>
                     </div>
                 </div>
             </div>

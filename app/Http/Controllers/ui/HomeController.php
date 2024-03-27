@@ -67,6 +67,16 @@ class HomeController extends Controller
         return view('ui.pages.contact');
     }
 
+    public function about()
+    {
+        return view('ui.pages.about');
+    }
+
+    public function coming()
+    {
+        return view('ui.pages.coming-soon');
+    }
+
     public function thankyou()
     {
         return view('ui.pages.thankyou');
