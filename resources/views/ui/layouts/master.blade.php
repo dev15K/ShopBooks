@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Favicons -->
+    <link href="{{ asset('image/logo.jpeg') }}" rel="icon">
+    <link href="{{ asset('image/logo.jpeg') }}" rel="apple-touch-icon">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="{{ asset('ui/fonts/icomoon/style.css') }}">
 

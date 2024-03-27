@@ -19,15 +19,15 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references(/**/ 'id')->on('users')->onDelete('cascade');
 
-            $table->integer('full_name');
-            $table->integer('email');
-            $table->integer('phone');
-            $table->integer('address');
+            $table->string('full_name');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('address');
 
-            $table->integer('total_price')->comment('Giá toàn bộ sản phẩm');
-            $table->integer('shipping_price')->comment('Giá tiền phí vận chuyển');
-            $table->integer('discount_price')->comment('Giá tiền giảm giá');
-            $table->integer('total')->comment('Tổng tiền thanh toán');
+            $table->float('total_price')->comment('Giá toàn bộ sản phẩm');
+            $table->float('shipping_price')->comment('Giá tiền phí vận chuyển');
+            $table->float('discount_price')->comment('Giá tiền giảm giá');
+            $table->float('total')->comment('Tổng tiền thanh toán');
 
             $table->string('order_method')->default(OrderMethod::IMMEDIATE);
             $table->string('status')->default(OrderStatus::PROCESSING);

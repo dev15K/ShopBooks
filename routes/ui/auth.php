@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\ui\CartController;
+use App\Http\Controllers\ui\CheckoutController;
 use App\Http\Controllers\ui\HomeController;
 use App\Http\Controllers\ui\UserController;
 
@@ -36,4 +37,7 @@ Route::group(['prefix' => 'cart'], function () {
 
 Route::group(['prefix' => 'checkout'], function () {
     Route::get('/show', [HomeController::class, 'checkout'])->name('checkout.show');
+    Route::post('/create', [CheckoutController::class, 'checkout'])->name('checkout.create');
 });
+
+Route::get('/thank-you', [HomeController::class, 'thankyou'])->name('thank.you.show');

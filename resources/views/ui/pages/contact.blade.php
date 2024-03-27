@@ -1,5 +1,3 @@
-<?php
-
 @extends('ui.layouts.master')
 @section('title')
     Homepage

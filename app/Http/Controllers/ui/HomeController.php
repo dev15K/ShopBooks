@@ -58,7 +58,8 @@ class HomeController extends Controller
 
     public function checkout()
     {
-        return view('ui.pages.checkout');
+        $carts = Cart::where('user_id', Auth::user()->id)->orderByDesc('id')->get();
+        return view('ui.pages.checkout', compact('carts'));
     }
 
     public function contact()
