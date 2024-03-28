@@ -16,6 +16,7 @@
 use App\Http\Controllers\admin\AdminCategoryController;
 use App\Http\Controllers\admin\AdminContactController;
 use App\Http\Controllers\admin\AdminHomeController;
+use App\Http\Controllers\admin\AdminOrderController;
 use App\Http\Controllers\admin\AdminProductController;
 use App\Http\Controllers\admin\AdminUserController;
 
@@ -52,10 +53,10 @@ Route::group(['prefix' => 'products'], function () {
 
 /* Orders */
 Route::group(['prefix' => 'orders'], function () {
-    Route::get('/list', [AdminContactController::class, 'list'])->name('admin.orders.list');
-    Route::get('/detail/{id}', [AdminContactController::class, 'detail'])->name('admin.orders.detail');
-    Route::post('/change-status/{id}', [AdminContactController::class, 'changeStatus'])->name('admin.orders.changeStatus');
-    Route::delete('/delete/{id}', [AdminContactController::class, 'delete'])->name('admin.orders.delete');
+    Route::get('/list', [AdminOrderController::class, 'list'])->name('admin.orders.list');
+    Route::get('/detail/{id}', [AdminOrderController::class, 'detail'])->name('admin.orders.detail');
+    Route::post('/change-status/{id}', [AdminOrderController::class, 'changeStatus'])->name('admin.orders.changeStatus');
+    Route::delete('/delete/{id}', [AdminOrderController::class, 'delete'])->name('admin.orders.delete');
 });
 
 /* Contact */

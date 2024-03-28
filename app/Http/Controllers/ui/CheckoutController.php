@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -61,6 +62,13 @@ class CheckoutController extends Controller
                 $order_item->order_id = $order->id;
 
                 $order_item->save();
+
+                /**
+                 * Xử lí khi mua đơn hàng sẽ trừ đi số sản phẩm đã mua
+                 * */
+                $product = Product::find($cart->product_id);
+                $product->quantity = $product->quantity - $cart->quantity;
+                $product->save();
             }
 
             if ($order_created) {
@@ -71,7 +79,6 @@ class CheckoutController extends Controller
             alert()->error('Error', 'Checkout error!');
             return back();
         } catch (\Exception $exception) {
-            dd($exception);
             alert()->error('Error', 'Please try again!');
             return back();
         }
