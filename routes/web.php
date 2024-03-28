@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ErrorController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\ui\ContactController;
 use App\Http\Controllers\ui\HomeController;
 use App\Http\Controllers\ui\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,7 @@ Route::group(['prefix' => ''], function () {
     Route::get('/shop', [HomeController::class, 'shop'])->name('main.shop');
     Route::get('/detail/{id}', [HomeController::class, 'detailProduct'])->name('main.product.detail');
     Route::get('/contact', [HomeController::class, 'contact'])->name('main.contact');
+    Route::post('/contact-send', [ContactController::class, 'create'])->name('main.contact.send');
     Route::get('/about', [HomeController::class, 'about'])->name('main.about');
     Route::get('/coming-soon', [HomeController::class, 'coming'])->name('main.coming.soon');
     Route::get('/products/list', [ProductController::class, 'list'])->name('main.products.list');

@@ -14,6 +14,7 @@
 /* User */
 
 use App\Http\Controllers\admin\AdminCategoryController;
+use App\Http\Controllers\admin\AdminContactController;
 use App\Http\Controllers\admin\AdminHomeController;
 use App\Http\Controllers\admin\AdminProductController;
 use App\Http\Controllers\admin\AdminUserController;
@@ -47,4 +48,20 @@ Route::group(['prefix' => 'products'], function () {
     Route::post('/create', [AdminProductController::class, 'create'])->name('admin.products.create');
     Route::put('/update/{id}', [AdminProductController::class, 'update'])->name('admin.products.update');
     Route::delete('/delete/{id}', [AdminProductController::class, 'delete'])->name('admin.products.delete');
+});
+
+/* Orders */
+Route::group(['prefix' => 'orders'], function () {
+    Route::get('/list', [AdminContactController::class, 'list'])->name('admin.orders.list');
+    Route::get('/detail/{id}', [AdminContactController::class, 'detail'])->name('admin.orders.detail');
+    Route::post('/change-status/{id}', [AdminContactController::class, 'changeStatus'])->name('admin.orders.changeStatus');
+    Route::delete('/delete/{id}', [AdminContactController::class, 'delete'])->name('admin.orders.delete');
+});
+
+/* Contact */
+Route::group(['prefix' => 'contacts'], function () {
+    Route::get('/list', [AdminContactController::class, 'list'])->name('admin.contacts.list');
+    Route::get('/detail/{id}', [AdminContactController::class, 'detail'])->name('admin.contacts.detail');
+    Route::post('/change-status/{id}', [AdminContactController::class, 'changeStatus'])->name('admin.contacts.changeStatus');
+    Route::delete('/delete/{id}', [AdminContactController::class, 'delete'])->name('admin.contacts.delete');
 });
