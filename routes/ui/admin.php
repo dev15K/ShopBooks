@@ -24,7 +24,7 @@ Route::get('/dashboard', [AdminHomeController::class, 'index'])->name('admin.hom
 /* Users */
 Route::group(['prefix' => 'users'], function () {
     Route::get('/list', [AdminUserController::class, 'list'])->name('admin.users.list');
-    Route::get('/create', [AdminUserController::class, 'createProcess'])->name('admin.users.createProcess');
+    Route::get('/create', [AdminUserController::class, 'processCreate'])->name('admin.users.createProcess');
     Route::get('/detail/{id}', [AdminUserController::class, 'detail'])->name('admin.users.detail');
     Route::post('/create', [AdminUserController::class, 'create'])->name('admin.users.create');
     Route::put('/update/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');

@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label for="about">About</label>
-                <textarea class="form-control" id="about" name="about" rows="5"></textarea>
+                <textarea class="form-control" id="about" name="about" rows="5" required></textarea>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">
