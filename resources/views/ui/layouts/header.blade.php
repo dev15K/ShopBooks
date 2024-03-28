@@ -82,16 +82,16 @@
                         @endforeach
                     </ul>
                 </li>
-                {{--                <li class="has-children">--}}
-                {{--                    <a href="{{ route('main.coming.soon') }}">Catalogue</a>--}}
-                {{--                    <ul class="dropdown">--}}
-                {{--                        <li><a href="#">Menu One</a></li>--}}
-                {{--                        <li><a href="#">Menu Two</a></li>--}}
-                {{--                        <li><a href="#">Menu Three</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </li>--}}
+                <li class="has-children">
+                    <a href="{{ route('main.coming.soon') }}">New Arrivals</a>
+                    <ul class="dropdown">
+                        <li><a href="#">Novel</a></li>
+                        <li><a href="#">Special</a></li>
+                        <li><a href="#">Comic</a></li>
+                    </ul>
+                </li>
                 <li><a href="{{ route('main.shop') }}">Shop</a></li>
-                <li><a href="{{ route('main.coming.soon') }}">New Arrivals</a></li>
+                <li><a href="{{ route('main.coming.soon') }}">News/Event</a></li>
                 <li><a href="{{ route('main.about') }}">About</a></li>
                 <li><a href="{{ route('main.contact') }}">Contact</a></li>
             </ul>

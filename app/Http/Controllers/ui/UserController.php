@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function profile(Request $request)
     {
-        return view('ui.pages.profile');
+        return view('ui.pages.me.profile');
     }
 
     public function updateProfile(Request $request)
