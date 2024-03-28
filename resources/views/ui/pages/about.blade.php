@@ -46,63 +46,24 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-3">
-
-                    <div class="block-38 text-center">
-                        <div class="block-38-img">
-                            <div class="block-38-header">
-                                <img src="{{ asset('ui/images/person_1.jpg') }}" alt="Image placeholder" class="mb-4">
-                                <h3 class="block-38-heading h4">Elizabeth Graham</h3>
-                                <p class="block-38-subheading">CEO/Co-Founder</p>
-                            </div>
-                            <div class="block-38-body">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-38 text-center">
-                        <div class="block-38-img">
-                            <div class="block-38-header">
-                                <img src="{{ asset('ui/images/person_2.jpg') }}" alt="Image placeholder" class="mb-4">
-                                <h3 class="block-38-heading h4">Jennifer Greive</h3>
-                                <p class="block-38-subheading">Co-Founder</p>
-                            </div>
-                            <div class="block-38-body">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
+                @foreach($members as $member)
+                    <div class="col-md-6 col-lg-3">
+                        <div class="block-38 text-center">
+                            <div class="block-38-img">
+                                <div class="block-38-header">
+                                    <img src="{{ asset($member->avt) }}" alt="Image placeholder" class="mb-4">
+                                    <h3 class="block-38-heading h4">{{ $member->name }}</h3>
+                                    <p class="block-38-subheading">{{ $member->position }}</p>
+                                </div>
+                                <div class="block-38-body">
+                                    <p>
+                                        {{ $member->about }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-38 text-center">
-                        <div class="block-38-img">
-                            <div class="block-38-header">
-                                <img src="{{ asset('ui/images/person_3.jpg') }}" alt="Image placeholder" class="mb-4">
-                                <h3 class="block-38-heading h4">Patrick Marx</h3>
-                                <p class="block-38-subheading">Marketing</p>
-                            </div>
-                            <div class="block-38-body">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="block-38 text-center">
-                        <div class="block-38-img">
-                            <div class="block-38-header">
-                                <img src="{{ asset('ui/images/person_4.jpg') }}" alt="Image placeholder" class="mb-4">
-                                <h3 class="block-38-heading h4">Mike Coolbert</h3>
-                                <p class="block-38-subheading">Sales Manager</p>
-                            </div>
-                            <div class="block-38-body">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aut minima nihil sit distinctio recusandae doloribus ut fugit officia voluptate soluta. </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

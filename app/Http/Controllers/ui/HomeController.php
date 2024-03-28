@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\ui;
 
 use App\Enums\CategoryStatus;
+use App\Enums\MemberStatus;
 use App\Enums\ProductStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Member;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -69,7 +71,11 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('ui.pages.about');
+        $members = Member::where('status', MemberStatus::ACTIVE)
+            ->orderBy('stt', 'asc')
+            ->limit(4)
+            ->get();
+        return view('ui.pages.about', compact('members'));
     }
 
     public function coming()

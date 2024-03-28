@@ -88,13 +88,13 @@
             </a>
             <ul id="members-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.users.list') }}">
-                        <i class="bi bi-circle"></i><span>List User</span>
+                    <a href="{{ route('admin.members.list') }}">
+                        <i class="bi bi-circle"></i><span>List Member</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.users.createProcess') }}">
-                        <i class="bi bi-circle"></i><span>Create User</span>
+                    <a href="{{ route('admin.members.createProcess') }}">
+                        <i class="bi bi-circle"></i><span>Create Member</span>
                     </a>
                 </li>
             </ul>

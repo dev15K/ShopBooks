@@ -11,17 +11,17 @@
 |
 */
 
-/* User */
-
 use App\Http\Controllers\admin\AdminCategoryController;
 use App\Http\Controllers\admin\AdminContactController;
 use App\Http\Controllers\admin\AdminHomeController;
+use App\Http\Controllers\admin\AdminMemberController;
 use App\Http\Controllers\admin\AdminOrderController;
 use App\Http\Controllers\admin\AdminProductController;
 use App\Http\Controllers\admin\AdminUserController;
 
 Route::get('/dashboard', [AdminHomeController::class, 'index'])->name('admin.home');
 
+/* Users */
 Route::group(['prefix' => 'users'], function () {
     Route::get('/list', [AdminUserController::class, 'list'])->name('admin.users.list');
     Route::get('/create', [AdminUserController::class, 'createProcess'])->name('admin.users.createProcess');
@@ -65,4 +65,14 @@ Route::group(['prefix' => 'contacts'], function () {
     Route::get('/detail/{id}', [AdminContactController::class, 'detail'])->name('admin.contacts.detail');
     Route::post('/change-status/{id}', [AdminContactController::class, 'changeStatus'])->name('admin.contacts.changeStatus');
     Route::delete('/delete/{id}', [AdminContactController::class, 'delete'])->name('admin.contacts.delete');
+});
+
+/* Members */
+Route::group(['prefix' => 'members'], function () {
+    Route::get('/list', [AdminMemberController::class, 'list'])->name('admin.members.list');
+    Route::get('/create', [AdminMemberController::class, 'processCreate'])->name('admin.members.createProcess');
+    Route::get('/detail/{id}', [AdminMemberController::class, 'detail'])->name('admin.members.detail');
+    Route::post('/create', [AdminMemberController::class, 'create'])->name('admin.members.create');
+    Route::put('/update/{id}', [AdminMemberController::class, 'update'])->name('admin.members.update');
+    Route::delete('/delete/{id}', [AdminMemberController::class, 'delete'])->name('admin.members.delete');
 });
