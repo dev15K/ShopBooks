@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Revenue;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminOrderController extends Controller
@@ -43,10 +45,26 @@ class AdminOrderController extends Controller
 
             $order->save();
 
+            $revenue = Revenue::where('order_id', $id)->first();
+
+            if (!$revenue) {
+                $revenue = new Revenue();
+                $revenue->total = $order->total;
+                $revenue->order_id = $order->id;
+                $revenue->datetime = Carbon::now()->addHours(7);
+            } else {
+                $revenue->total = $order->total;
+            }
+
+            $revenue->save();
+
             /**
              * Xử lí khi huỷ đơn hàng sẽ hoàn trả lại số sản phẩm đã mua
              * */
             if ($status == OrderStatus::CANCELED) {
+                /* Nếu status là cancel sẽ xoá doanh thu của order đó */
+                Revenue::where('order_id', $id)->delete();
+
                 $order_items = OrderItem::where('order_id', $id)->get();
                 foreach ($order_items as $item) {
                     $product = Product::find($item->product_id);

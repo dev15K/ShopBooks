@@ -44,13 +44,6 @@
                             <a href="{{ route('admin.orders.detail', $order->id) }}" class="btn btn-success">
                                 <i class="bi bi-eye"></i>
                             </a>
-                            @if($order->status != \App\Enums\OrderStatus::DELETED)
-                                <form method="post" action="{{ route('admin.orders.delete', $order->id) }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                                </form>
-                            @endif
                         </div>
                     </td>
                 </tr>

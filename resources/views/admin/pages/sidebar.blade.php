@@ -121,6 +121,15 @@
         </li>
         <!-- End User Nav -->
 
+        <!-- Start Revenue Nav -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('admin.revenues.list') }}">
+                <i class="bi bi-currency-dollar"></i>
+                <span>Revenue</span>
+            </a>
+        </li>
+        <!-- End Revenue Nav -->
+
         <li class="nav-heading">Pages</li>
 
         <!--Start Profile Page Nav -->

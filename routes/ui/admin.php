@@ -17,6 +17,7 @@ use App\Http\Controllers\admin\AdminHomeController;
 use App\Http\Controllers\admin\AdminMemberController;
 use App\Http\Controllers\admin\AdminOrderController;
 use App\Http\Controllers\admin\AdminProductController;
+use App\Http\Controllers\admin\AdminRevenueController;
 use App\Http\Controllers\admin\AdminUserController;
 
 Route::get('/dashboard', [AdminHomeController::class, 'index'])->name('admin.home');
@@ -75,4 +76,9 @@ Route::group(['prefix' => 'members'], function () {
     Route::post('/create', [AdminMemberController::class, 'create'])->name('admin.members.create');
     Route::put('/update/{id}', [AdminMemberController::class, 'update'])->name('admin.members.update');
     Route::delete('/delete/{id}', [AdminMemberController::class, 'delete'])->name('admin.members.delete');
+});
+
+/* Revenues */
+Route::group(['prefix' => 'revenues'], function () {
+    Route::get('/list', [AdminRevenueController::class, 'list'])->name('admin.revenues.list');
 });

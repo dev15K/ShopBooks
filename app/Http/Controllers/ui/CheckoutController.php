@@ -9,6 +9,8 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Product;
+use App\Models\Revenue;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,6 +54,12 @@ class CheckoutController extends Controller
             $order->user_id = $user_id;
 
             $order_created = $order->save();
+
+            $revenue = new Revenue();
+            $revenue->total = $total;
+            $revenue->order_id = $order->id;
+            $revenue->datetime = Carbon::now()->addHours(7);
+            $revenue->save();
 
             foreach ($carts as $cart) {
                 $order_item = new OrderItem();
