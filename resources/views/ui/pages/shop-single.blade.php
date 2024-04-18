@@ -22,16 +22,15 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ asset($product->thumbnail) }}" alt="Image" class="img-fluid">
+                        <img src="{{ asset($product->thumbnail) }}" alt="Image" class="img-fluid border">
                         @php
                             $gallery = $product->gallery;
                             $list_gallery = explode(',', $gallery);
                         @endphp
                         <div class="list-gallery d-flex">
                             @foreach($list_gallery as $image)
-
+                                <img src="{{ asset($image) }}" alt="Image" class="mt-3 mr-2 p-2 border" width="100px">
                             @endforeach
-                            <img src="{{ asset($image) }}" alt="Image" class="mt-3 mr-2" width="100px">
                         </div>
                     </div>
                     <div class="col-md-6">
