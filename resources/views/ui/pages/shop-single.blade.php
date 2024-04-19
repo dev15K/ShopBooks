@@ -2,6 +2,23 @@
 @section('title')
     Product detail
 @endsection
+<style>
+    .image-product {
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .image-product img {
+        height: auto;
+        width: auto;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .image-product:hover img {
+        transform: scale(1.1);
+    }
+</style>
 @section('content')
     <div class="bg-light py-3">
         <div class="container">
@@ -22,14 +39,16 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <img src="{{ asset($product->thumbnail) }}" alt="Image" class="img-fluid border">
+                       <div class="image-product">
+                           <img id="mainImage" width="100%" src="{{ asset($product->thumbnail) }}" alt="Image" class="img-fluid border">
+                       </div>
                         @php
                             $gallery = $product->gallery;
                             $list_gallery = explode(',', $gallery);
                         @endphp
                         <div class="list-gallery d-flex">
                             @foreach($list_gallery as $image)
-                                <img src="{{ asset($image) }}" alt="Image" class="mt-3 mr-2 p-2 border" width="100px">
+                                <img src="{{ asset($image) }}" style="cursor: pointer" alt="Image" class="mt-3 mr-2 p-2 border imgGallery" width="100px">
                             @endforeach
                         </div>
                     </div>
@@ -42,13 +61,17 @@
                         <div class="mb-5">
                             <div class="input-group mb-3" style="max-width: 120px;">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                    <button class="btn btn-outline-primary js-btn-minus" onclick="fnMinusQuantity()"
+                                            type="button">&minus;
+                                    </button>
                                 </div>
                                 <input type="number" class="form-control text-center" value="1" min="1"
-                                       max="{{ $product->quantity }}" placeholder="" name="quantity"
+                                       max="{{ $product->quantity }}" placeholder="" name="quantity" id="inputQuantity"
                                        aria-label="Example text with button addon" aria-describedby="button-addon1">
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                    <button class="btn btn-outline-primary js-btn-plus" onclick="fnPlusQuantity();"
+                                            type="button">&plus;
+                                    </button>
                                 </div>
                             </div>
 
@@ -73,32 +96,56 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-7 site-section-heading text-center pt-4">
-                    <h2>New Products</h2>
+                    <h2>Other Products</h2>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="nonloop-block-3 owl-carousel">
-                        @foreach($new_products as $new_product)
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="{{ asset($new_product->thumbnail) }}" alt="Image placeholder"
-                                             class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3>
-                                            <a href="{{ route('main.product.detail', $new_product->id) }}"> {{ $new_product->name }}</a>
-                                        </h3>
-                                        <p class="mb-0"> {{ $new_product->short_description }}</p>
-                                        <p class="text-primary font-weight-bold">$ {{ $new_product->price }}</p>
-                                    </div>
+                    @foreach($new_products as $new_product)
+                        <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                            <div class="block-4 text-center border">
+                                <figure class="block-4-image">
+                                    <a class="image-product" href="{{ route('main.product.detail', $new_product->id) }}"><img
+                                            src="{{ asset($new_product->thumbnail) }}" alt="Image placeholder"
+                                            class="img-fluid"></a>
+                                </figure>
+                                <div class="block-4-text p-4">
+                                    <h3>
+                                        <a href="{{ route('main.product.detail', $new_product->id) }}">{{ $new_product->name }}</a>
+                                    </h3>
+                                    <p class="mb-0">{{ $new_product->short_description }}</p>
+                                    <p class="text-primary font-weight-bold">${{ $new_product->price }}</p>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function fnPlusQuantity() {
+            let quantity = $('#inputQuantity');
+            let value = quantity.val();
+            value = parseInt(value) + 1;
+            quantity.val(value);
+        }
+
+        function fnMinusQuantity() {
+            let quantity = $('#inputQuantity');
+            let value = quantity.val();
+            if (parseInt(value) > 1) {
+                value = parseInt(value) - 1;
+                quantity.val(value);
+            }
+        }
+
+
+        $(document).ready(function () {
+            $('.imgGallery').click(function () {
+                let src = $(this).attr('src');
+                $('#mainImage').attr('src', src);
+            })
+        })
+    </script>
 @endsection

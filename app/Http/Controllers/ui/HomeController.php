@@ -20,7 +20,7 @@ class HomeController extends Controller
             ->limit(5)
             ->get();
 
-        $categories = Category::where('status', CategoryStatus::ACTIVE)->where('parent_id', null)->get();
+        $categories = Category::where('status', CategoryStatus::ACTIVE)->get();
         return view('ui.index', compact('new_products', 'categories'));
     }
 
@@ -30,11 +30,10 @@ class HomeController extends Controller
             ->orderByDesc('id')
             ->paginate(9);
         $categories = Category::where('status', CategoryStatus::ACTIVE)
-            ->where('parent_id', null)
             ->orderByDesc('id')
             ->get();
-        if (count($categories) > 3) {
-            $categoriesRandom = $categories->random(3);
+        if (count($categories) > 10) {
+            $categoriesRandom = $categories->random(10);
         } else {
             $categoriesRandom = $categories;
         }

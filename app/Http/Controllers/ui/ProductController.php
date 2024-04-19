@@ -17,11 +17,10 @@ class ProductController extends Controller
             ->orderByDesc('id')
             ->paginate(9);
         $categories = Category::where('status', CategoryStatus::ACTIVE)
-            ->where('parent_id', null)
             ->orderByDesc('id')
             ->get();
-        if (count($categories) > 3) {
-            $categoriesRandom = $categories->random(3);
+        if (count($categories) > 10) {
+            $categoriesRandom = $categories->random(10);
         } else {
             $categoriesRandom = $categories;
         }
@@ -35,11 +34,10 @@ class ProductController extends Controller
             ->orderByDesc('id')
             ->paginate(9);
         $categories = Category::where('status', CategoryStatus::ACTIVE)
-            ->where('parent_id', null)
             ->orderByDesc('id')
             ->get();
-        if (count($categories) > 3) {
-            $categoriesRandom = $categories->random(3);
+        if (count($categories) > 10) {
+            $categoriesRandom = $categories->random(10);
         } else {
             $categoriesRandom = $categories;
         }

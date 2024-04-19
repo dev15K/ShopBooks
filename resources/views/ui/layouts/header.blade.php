@@ -27,7 +27,7 @@
 </header>
 <header class="header-main d-flex align-items-center justify-content-center">
     <div class="text-center d-flex align-items-center  justify-content-between body-header-main">
-        <a href="#" class="logo-item">
+        <a href="{{ route('home') }}" class="logo-item">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 269.231 50">
                 <defs>
                     <pattern id="patternLogo" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"
@@ -39,11 +39,11 @@
                 <rect id="header__logo--bg" width="269.231" height="50" fill="url(#patternLogo)"></rect>
             </svg>
         </a>
-        <a href="#" class="d-flex justify-content-between align-items-center navbar-category text-white ">
+        <a href="{{ route('main.shop') }}" class="d-flex justify-content-between align-items-center navbar-category text-white ">
             <i class="fa-solid fa-bars-staggered pr-2"></i> <span>Danh mục</span>
         </a>
 
-        <a href="#" class="d-flex justify-content-between align-items-center navbar-category text-white ">
+        <a href="{{ route('main.coming.soon') }}" class="d-flex justify-content-between align-items-center navbar-category text-white ">
             <i class="fa-solid fa-location-dot pr-2"></i>
             <span class="d-flex nav-wrap p-0">
                <span class="small">Xem giá tại</span>
@@ -54,14 +54,14 @@
             <i class="fa-solid fa-magnifying-glass pl-3"></i>
             <input type="text" class="input-search" placeholder="Bạn cần tìm gì?">
         </div>
-        <a href="#" class="d-flex justify-content-between align-items-center navbar-category text-white ">
+        <a href="{{ route('main.shop') }}" class="d-flex justify-content-between align-items-center navbar-category text-white ">
             <i class="fa-solid fa-phone pr-2"></i>
             <span class="d-flex nav-wrap p-0">
                <span class="small">Gọi mua hàng</span>
                <strong class="small">1800.2097</strong>
            </span>
         </a>
-        <a href="#" class="d-flex justify-content-between align-items-center navbar-category text-white ">
+        <a href="{{ route('main.contact') }}" class="d-flex justify-content-between align-items-center navbar-category text-white ">
             <i class="fa-solid fa-location-dot pr-2"></i>
             <span class="d-flex nav-wrap p-0">
                <span class="small">Cửa hàng gần bạn</span>

@@ -1,3 +1,21 @@
+<style>
+    .image-product {
+        overflow: hidden;
+        border-radius: 10px;
+    }
+
+    .image-product img {
+        height: auto;
+        width: auto;
+        max-width: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .image-product:hover img {
+        transform: scale(1.1);
+    }
+</style>
 <div class="site-section">
     <div class="container">
 
@@ -37,7 +55,7 @@
                     @foreach($products as $product)
                         <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                             <div class="block-4 text-center border">
-                                <figure class="block-4-image">
+                                <figure class="block-4-image image-product">
                                     <a href="{{ route('main.product.detail', $product->id) }}"><img src="{{ asset($product->thumbnail) }}" alt="Image placeholder" class="img-fluid"></a>
                                 </figure>
                                 <div class="block-4-text p-4">
@@ -89,13 +107,9 @@
                     <div class="row">
                         @foreach($categoriesRandom as $category)
                             <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                                <a class="block-2-item" href="#">
-                                    <figure class="image">
-                                        <img src="{{ asset( $category->thumbnail) }}" alt="" class="img-fluid">
-                                    </figure>
+                                <a class="block-2-item" href="{{route('main.products.list.category', $category->id)}}">
                                     <div class="text">
                                         <span class="text-uppercase">{{ $category->name }}</span>
-                                        {{--                                            <h3>{{ $category->name }}</h3>--}}
                                     </div>
                                 </a>
                             </div>

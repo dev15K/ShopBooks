@@ -181,7 +181,7 @@
                     <ul>
                         @foreach($categories as $category)
                             <li>
-                                <a href="#" class="d-flex align-items-center justify-content-between">
+                                <a href="{{ route('main.products.list.category', $category->id) }}" class="d-flex align-items-center justify-content-between">
                                    <span>
                                        <img src="{{ $category->thumbnail }}" alt="" width="20px" class="icon-thumbnail">
                                        <span class="menu-item">{{ $category->name }}</span>
@@ -251,7 +251,7 @@
             <div class="full-sale">
                 <div class="product-list d-flex align-items-center justify-content-start p-3">
                     @foreach($new_products as $new_product)
-                        <a href="#" class="product m-2 bg-white border shadow-element">
+                        <a href="{{ route('main.product.detail', $new_product->id) }}" class="product m-2 bg-white border shadow-element">
                             <div class="image-product">
                                 <img src="{{ $new_product->thumbnail }}" alt="Image">
                             </div>
@@ -275,7 +275,7 @@
         </h3>
         <div class="list-product d-flex flex-row align-items-center flex-wrap justify-content-start">
             @foreach($new_products as $new_product)
-                <a href="#" class="product-item shadow-element">
+                <a href="{{ route('main.product.detail', $new_product->id) }}" class="product-item shadow-element">
                     <div class="image-product">
                         <img src="{{ $new_product->thumbnail }}" alt="Image">
                     </div>
@@ -308,7 +308,7 @@
         </h3>
         <div class="list-product d-flex flex-row align-items-center flex-wrap justify-content-start">
             @foreach($new_products as $new_product)
-                <a href="#" class="product-item shadow-element">
+                <a href="{{ route('main.product.detail', $new_product->id) }}" class="product-item shadow-element">
                     <div class="image-product">
                         <img src="{{ $new_product->thumbnail }}" alt="Image">
                     </div>

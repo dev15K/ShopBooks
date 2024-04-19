@@ -34,7 +34,7 @@
                                     <tr>
                                         <td class="product-thumbnail">
                                             <img src="{{ asset($cart->product->thumbnail) }}" alt="Image"
-                                                 class="img-fluid">
+                                                 class="img-fluid" width="100px">
                                         </td>
                                         <td class="product-name">
                                             <h2 class="h5 text-black">{{ $cart->product->name }}</h2>
