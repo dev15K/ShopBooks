@@ -39,6 +39,8 @@ Route::group(['prefix' => 'cart'], function () {
 Route::group(['prefix' => 'checkout'], function () {
     Route::get('/show', [HomeController::class, 'checkout'])->name('checkout.show');
     Route::post('/create', [CheckoutController::class, 'checkout'])->name('checkout.create');
+    Route::get('/return-checkout', [CheckoutController::class, 'returnCheckout'])->name('checkout.return');
+    Route::post('/vnpay', [CheckoutController::class, 'checkoutByVNPay'])->name('checkout.vnpay');
 });
 
 Route::group(['prefix' => 'm/orders'], function () {

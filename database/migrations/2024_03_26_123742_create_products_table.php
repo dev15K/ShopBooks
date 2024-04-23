@@ -29,7 +29,7 @@ return new class extends Migration {
             $table->longText('thumbnail');
             $table->longText('gallery');
 
-            $table->float('price');
+            $table->decimal('price', 15, 0);
 
             $table->string('status')->default(ProductStatus::ACTIVE);
 

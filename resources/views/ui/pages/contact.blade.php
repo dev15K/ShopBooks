@@ -52,7 +52,7 @@
                                 <div class="col-md-12">
                                     <label for="message" class="text-black">Message </label>
                                     <textarea name="message" id="message" cols="30" rows="7"
-                                              class="form-control" required></textarea>
+                                              class="form-control"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">

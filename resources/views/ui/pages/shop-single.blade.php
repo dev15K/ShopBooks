@@ -36,7 +36,7 @@
                     <div class="col-md-6">
                         <h2 class="text-black">{{ $product->name }}</h2>
                         <p class="mb-4">
-                            {{ $product->short_description }}
+                           {!! $product->short_description !!}
                         </p>
                         <p><strong class="text-primary h4">${{ $product->price }}</strong></p>
                         <div class="mb-5">
@@ -62,7 +62,7 @@
 
                     </div>
                     <div class="description m-3">
-                        {{ $product->description }}
+                        {!! $product->description !!}
                     </div>
                 </div>
             </form>
@@ -90,8 +90,7 @@
                                         <h3>
                                             <a href="{{ route('main.product.detail', $new_product->id) }}"> {{ $new_product->name }}</a>
                                         </h3>
-                                        <p class="mb-0"> {{ $new_product->short_description }}</p>
-                                        <p class="text-primary font-weight-bold">$ {{ $new_product->price }}</p>
+                                        <p class="text-danger font-weight-bold">$ {{ $new_product->price }}</p>
                                     </div>
                                 </div>
                             </div>

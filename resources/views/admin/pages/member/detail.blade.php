@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="about">About</label>
-                <textarea class="form-control" id="about" name="about" rows="5" required>{{ $member->about }}</textarea>
+                <textarea class="form-control" id="about" name="about" rows="5">{{ $member->about }}</textarea>
             </div>
             <div class="row">
                 <div class="form-group col-md-4">

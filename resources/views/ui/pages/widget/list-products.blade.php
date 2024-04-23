@@ -42,8 +42,7 @@
                                 </figure>
                                 <div class="block-4-text p-4">
                                     <h3><a href="{{ route('main.product.detail', $product->id) }}">{{ $product->name }}</a></h3>
-                                    <p class="mb-0">{{ $product->short_description }}</p>
-                                    <p class="text-primary font-weight-bold">${{ $product->price }}</p>
+                                    <p class="text-danger font-weight-bold">${{ $product->price }}</p>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +94,6 @@
                                     </figure>
                                     <div class="text">
                                         <span class="text-uppercase">{{ $category->name }}</span>
-                                        {{--                                            <h3>{{ $category->name }}</h3>--}}
                                     </div>
                                 </a>
                             </div>

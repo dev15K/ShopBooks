@@ -36,13 +36,11 @@
             </div>
             <div class="form-group">
                 <label for="short_description">Short Description</label>
-                <textarea class="form-control" id="short_description" rows="5" name="short_description"
-                          required>{{ $product->short_description }}</textarea>
+                <textarea class="form-control" id="short_description" rows="5" name="short_description">{{ $product->short_description }}</textarea>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="5"
-                          required>{{ $product->description }}</textarea>
+                <textarea class="form-control" id="description" name="description" rows="5">{{ $product->description }}</textarea>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">

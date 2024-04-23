@@ -6,8 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -24,10 +23,10 @@ return new class extends Migration
             $table->string('phone');
             $table->string('address');
 
-            $table->float('total_price')->comment('Giá toàn bộ sản phẩm');
-            $table->float('shipping_price')->comment('Giá tiền phí vận chuyển');
-            $table->float('discount_price')->comment('Giá tiền giảm giá');
-            $table->float('total')->comment('Tổng tiền thanh toán');
+            $table->decimal('total_price', 15, 0)->comment('Giá toàn bộ sản phẩm');
+            $table->decimal('shipping_price', 15, 0)->comment('Giá tiền phí vận chuyển');
+            $table->decimal('discount_price', 15, 0)->comment('Giá tiền giảm giá');
+            $table->decimal('total', 15, 0)->comment('Tổng tiền thanh toán');
 
             $table->string('order_method')->default(OrderMethod::IMMEDIATE);
             $table->string('status')->default(OrderStatus::PROCESSING);

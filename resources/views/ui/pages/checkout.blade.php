@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-            <form method="post" action="{{ route('checkout.create') }}">
+            <form id="formCheckout" method="post" action="{{ route('checkout.create') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-5 mb-md-0">
@@ -137,50 +137,28 @@
                                     </table>
 
                                     <div class="border p-3 mb-3">
-                                        <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse"
-                                                               href="#collapsecheque"
-                                                               role="button" aria-expanded="false"
-                                                               aria-controls="collapsecheque">Cash on Delivery</a></h3>
-
-                                        <div class="collapse" id="collapsecheque">
-                                            <div class="py-2">
-                                                <p class="mb-0">You will have to pay the corresponding order amount when
-                                                    you
-                                                    receive the goods</p>
-                                            </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <input type="radio" id="IMMEDIATE" name="order-method" class="inputCheckout"
+                                                   checked value="{{ \App\Enums\OrderMethod::IMMEDIATE }}">
+                                            <label for="IMMEDIATE">Cash on Delivery</label>
                                         </div>
                                     </div>
 
                                     <div class="border p-3 mb-3">
-                                        <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse"
-                                                               href="#collapsebank"
-                                                               role="button" aria-expanded="false"
-                                                               aria-controls="collapsebank">Direct Bank Transfer</a>
-                                        </h3>
-
-                                        <div class="collapse" id="collapsebank">
-                                            <div class="py-2">
-                                                <p class="mb-0">Make your payment directly into our bank account. Please
-                                                    use
-                                                    your Order ID as the payment reference. Your order won’t be shipped
-                                                    until the funds have cleared in our account.</p>
-                                            </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <input type="radio" id="CARD_CREDIT" name="order-method"
+                                                   class="inputCheckout"
+                                                   value="{{ \App\Enums\OrderMethod::CARD_CREDIT }}">
+                                            <label for="CARD_CREDIT">Debit or Credit Card( VNPAY)</label>
                                         </div>
                                     </div>
 
                                     <div class="border p-3 mb-5">
-                                        <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse"
-                                                               href="#collapsepaypal"
-                                                               role="button" aria-expanded="false"
-                                                               aria-controls="collapsepaypal">Paypal</a></h3>
-
-                                        <div class="collapse" id="collapsepaypal">
-                                            <div class="py-2">
-                                                <p class="mb-0">Make your payment directly into our bank account. Please
-                                                    use
-                                                    your Order ID as the payment reference. Your order won’t be shipped
-                                                    until the funds have cleared in our account.</p>
-                                            </div>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <input type="radio" id="ELECTRONIC_WALLET" name="order-method"
+                                                   class="inputCheckout"
+                                                   value="{{ \App\Enums\OrderMethod::ELECTRONIC_WALLET }}">
+                                            <label for="ELECTRONIC_WALLET">E-wallet( MOMO)</label>
                                         </div>
                                     </div>
 
@@ -197,6 +175,9 @@
                             <input id="c_shipping_price" name="c_shipping_price" type="text">
                             <input id="c_discount_price" name="c_discount_price" type="text">
                             <input id="c_total" name="c_total" type="text">
+                            @if(Auth::check())
+                                <input id="user_id" name="user_id" type="text" value="{{ Auth::user()->id }}">
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -204,6 +185,24 @@
         </div>
     </div>
     <script>
+        $(document).ready(function () {
+            let main_url = `{{ route('checkout.create') }}`;
+            let vnpay_url = `{{ route('checkout.vnpay') }}`;
+
+            $('.inputCheckout').click(function () {
+                let check = $(this).val();
+
+                switch (check) {
+                    case `{{ \App\Enums\OrderMethod::CARD_CREDIT }}`:
+                        $('#formCheckout').attr('action', vnpay_url);
+                        break;
+                    default:
+                        $('#formCheckout').attr('action', main_url);
+                        break;
+                }
+            })
+        })
+
         function calcTotalCheckout() {
             let list_price_product = document.getElementsByClassName('productPrice');
             let total_fee = 0;

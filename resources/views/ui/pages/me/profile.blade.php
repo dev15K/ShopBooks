@@ -119,7 +119,7 @@
                                     <div class="row mb-3">
                                         <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <textarea name="about" class="form-control" id="about" required
+                                            <textarea name="about" class="form-control" id="about"
                                                       style="height: 100px">
                                                 {{Auth::user()->about}}
                                             </textarea>
