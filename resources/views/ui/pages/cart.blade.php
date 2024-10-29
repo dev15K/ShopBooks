@@ -50,7 +50,7 @@
                                                         &minus;
                                                     </button>
                                                 </div>
-                                                <input type="text" class="form-control text-center"
+                                                <input type="text" class="form-control onlynum text-center"
                                                        value="{{ $cart->quantity }}"
                                                        id="inputQuantity_{{ $cart->id }}"
                                                        placeholder="" aria-label="Example text with button addon"

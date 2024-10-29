@@ -66,46 +66,6 @@
         </div>
     </div>
 
-    <div class="site-section site-blocks-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-                    <a class="block-2-item" href="#">
-                        <figure class="image">
-                            <img src="{{ asset('ui/images/women.jpg') }}" alt="" class="img-fluid">
-                        </figure>
-                        <div class="text">
-                            <span class="text-uppercase">Collections</span>
-                            <h3>Novel</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-                    <a class="block-2-item" href="#">
-                        <figure class="image">
-                            <img src="{{ asset('ui/images/children.jpg') }}" alt="" class="img-fluid">
-                        </figure>
-                        <div class="text">
-                            <span class="text-uppercase">Collections</span>
-                            <h3>Special</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-                    <a class="block-2-item" href="#">
-                        <figure class="image">
-                            <img src="{{ asset('ui/images/men.jpg') }}" alt="" class="img-fluid">
-                        </figure>
-                        <div class="text">
-                            <span class="text-uppercase">Collections</span>
-                            <h3>Comic</h3>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="site-section block-3 site-blocks-2 bg-light">
         <div class="container">
             <div class="row justify-content-center">
@@ -117,14 +77,18 @@
                 <div class="col-md-12">
                     <div class="nonloop-block-3 owl-carousel">
                         @foreach($new_products as $new_product)
-                            <div class="item">
+                            <div class="item" style="height: 500px">
                                 <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="{{ asset($new_product->thumbnail) }}" alt="Image placeholder"
-                                             class="img-fluid">
+                                    <figure class="block-4-image d-flex align-items-center justify-content-center">
+                                        <a href="{{ route('main.product.detail', $new_product->id) }}">
+                                            <img src="{{ asset($new_product->thumbnail) }}" alt="Image placeholder"
+                                                 class="img-fluid" style="width: 250px; height: 280px"></a>
                                     </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="{{ route('main.product.detail', $new_product->id) }}">{{ $new_product->name }}</a></h3>
+                                    <div class="block-4-text p-4" style="height: 120px">
+                                        <h3>
+                                            <a class="text_truncate_2_"
+                                               href="{{ route('main.product.detail', $new_product->id) }}">{{ $new_product->name }}</a>
+                                        </h3>
                                         <p class="text-danger font-weight-bold">${{ $new_product->price }}</p>
                                     </div>
                                 </div>
@@ -135,6 +99,55 @@
             </div>
         </div>
     </div>
+
+    @php
+        $i = 1;
+    @endphp
+    @foreach($categories as $category)
+        @if($category['count'] > 0)
+            <div class="site-section block-3 site-blocks-2 @php  if ($i % 2 === 0) echo 'bg-light'; @endphp">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-7 site-section-heading text-center pt-4">
+                            <h2>{{ $category['name'] }}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="nonloop-block-3 owl-carousel">
+                                @foreach($category['products'] as $_product)
+                                    @if($_product)
+                                        <div class="item" style="height: 500px">
+                                            <div class="block-4 text-center">
+                                                <figure
+                                                    class="block-4-image d-flex align-items-center justify-content-center">
+                                                    <a href="{{ route('main.product.detail', $_product['id']) }}">
+                                                        <img src="{{ asset($_product['thumbnail']) }}"
+                                                             alt="Image placeholder"
+                                                             class="img-fluid" style="width: 250px; height: 280px"></a>
+                                                </figure>
+                                                <div class="block-4-text p-4" style="height: 120px">
+                                                    <h3>
+                                                        <a class="text_truncate_2_"
+                                                           href="{{ route('main.product.detail', $_product['id']) }}">{{ $_product['name'] }}</a>
+                                                    </h3>
+                                                    <p class="text-danger font-weight-bold">
+                                                        ${{ $_product['price'] }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @php
+            ++$i;
+        @endphp
+    @endforeach
 
     <div class="site-section block-8">
         <div class="container">

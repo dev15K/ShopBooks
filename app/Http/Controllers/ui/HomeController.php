@@ -21,7 +21,25 @@ class HomeController extends Controller
             ->orderByDesc('id')
             ->limit(5)
             ->get();
-        return view('ui.index', compact('new_products'));
+
+        $categories = Category::where('status', CategoryStatus::ACTIVE)
+            ->orderByDesc('id')
+            ->cursor()
+            ->map(function ($item) {
+                $category = $item->toArray();
+
+                $products = Product::where('category_id', $item->id)
+                    ->where('status', ProductStatus::ACTIVE)
+                    ->orderByDesc('id')
+                    ->get();
+
+                $category['count'] = $products->count();
+
+                $category['products'] = $products->toArray();
+
+                return $category;
+            });
+        return view('ui.index', compact('new_products', 'categories'));
     }
 
     public function shop()

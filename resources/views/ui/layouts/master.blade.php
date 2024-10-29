@@ -48,5 +48,11 @@
 
 <script src="{{ asset('ui/js/main.js') }}"></script>
 
+<script>
+    $('.onlynum').on('input', function (event) {
+        this.value = this.value.replace(/[^0-9]/g, '');
+    })
+</script>
+
 </body>
 </html>
